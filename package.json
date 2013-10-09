@@ -1,0 +1,19 @@
+{
+  "name": "lib",
+  "version": "0.0.1",
+  "description": "nekobato blog",
+  "main": "index.coffee",
+  "scripts": {
+    "test": "lib"
+  },
+  "keywords": [
+    "blog",
+    "node"
+  ],
+  "author": "nekobato",
+  "license": "MIT",
+  "dependencies": {
+    "underscore": "~1.5.2",
+    "socket.io": "~0.9.16"
+  }
+}
