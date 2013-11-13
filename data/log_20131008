@@ -1,0 +1,34 @@
+<p>サーバー上のgit用アカウントを利用してレポジトリを管理する</p>
+<p>サービスを立てる際<br /> 「よし、サーバーを立てたぞ。レポジトリはこれね！」 -&gt; <em>/var/git/***.git</em><br /> みたいに、初期の方はサーバー上にアカウントをぽいぽいと追加して開発するかもしれない。<br /> 皆がroot権限持ってたり、管理者が誰なのかいまいち決まってなかったり。<br /> しかしプロジェクトが安定して人の入れ替わりが起こると、引き継ぎに穴があったり。<br /> 権限の集約と作業の単純化のために、git用アカウントでプロジェクトを管理するメモ。</p>
+<ul>
+<li>OS : CentOS 6.3</li>
+</ul>
+<p>gitがインストールされていなかったらgitを入れる。</p>
+<pre>    sudo yum -y install git
+</pre>
+<p></p>
+<p>git（グループ：git）ユーザーを作る。この時、ユーザーのホームディレクトリにレポジトリを作るので<br /> /var/git/にホームディレクトリを指定する。</p>
+<pre>    sudo useradd -d /var/git/ -m -g git git    
+</pre>
+<p></p>
+<p>以下はgitにユーザーを変えて行う。<br /> gitユーザーをメンバーが使用出来るように、公開鍵をぽいぽい登録する。</p>
+<pre>    sudo su git
+    cd /var/git/
+    mkdir -m 700 .ssh
+    touch .ssh/authorized_keys
+    chmod 600 .ssh/authorized_keys
+    echo '公開鍵の文字列' &gt;&gt; .ssh/authorized_keys
+  </pre>
+<p></p>
+<p>レポジトリを作る。</p>
+<pre>    mkdir /var/git/[repository name].git
+    cd /var/git/[repository name].git
+    git init --bare --shared=true
+  </pre>
+<p></p>
+<p>最後に、シェルをgit-shellに指定する。（gitが入っていれば <em>which git-shell</em> で場所が出る）<br /> これでユーザー：gitは以後通常のシェル操作が不可能となる。sshも無理。</p>
+<pre>    chsh /usr/bin/git-shell
+  </pre>
+<p></p>
+<p>以上で準備は完了なので、メンバーにレポジトリを教えれば運用開始。<br /> git@[server domain]:/var/git/[repository name].gitがリモートレポジトリとなる。</p>
+<p>恐らくWebサービスで使う構成なので、ここからhooksに色々設定を追加するんだけども、最低限はこれでおっけー</p>

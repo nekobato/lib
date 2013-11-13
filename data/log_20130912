@@ -1,0 +1,65 @@
+<p>
+	<em><span>LightBlue is a cross-platform Bluetooth API for Python</span></em><em>It is available for Mac OS X, GNU/Linux and Nokia's Python for Series 60 platform for mobile phones.</em><span>https://github.com/postskolkovo/lightblue-0.4</span>
+</p>
+<p>
+	<br/><br/><br/> Mac上から周囲のBluetoothデバイスを検出したかったので、pythonのbluetoothモジュールを探していた。<br/>WindowsならPybluez(&nbsp;https://code.google.com/p/pybluez/<span><span> )を使うのだが、Macなのでlightblueを使う。<br/><br/><br/>git cloneしてきてlightblue-0.4/src/macの中身を作業フォルダに移動し、lightblueに名前変更<br/>試しにimport lightblueしてみる。<br/><br/></span></span>
+</p>
+<pre>
+	TypeError: Error when calling the metaclass bases
+</pre>
+<p>
+	<span><span><br/><br/>えっ<br/><br/></span></span>
+</p>
+<pre>
+	class _AsyncDeviceInquiry does not correctly implement protocol IOBluetoothDeviceInquiryDelegate: the signature for method deviceInquiryComplete:error:aborted: is v@:@iB instead of v@:@iZ
+</pre>
+<p>
+	<span><br/><br/>調べてみると、エラーの通りB-&gt;Zに変えるとエラーは消えるようだ。<br/>指定の箇所の"</span><span>v@:@iB"を"v@:@iZ"に変える。<br/><br/><br/>python &gt;&gt;&gt; import lightblue<br/><br/></span>
+</p>
+<pre>
+	TypeError: Error when calling the metaclass bases<br/>class _AsyncDeviceInquiry does not fully implement protocol IOBluetoothDeviceInquiryDelegate: no implementation for deviceInquiryDeviceNameUpdated:device:devicesRemaining:
+</pre>
+<p>
+	<br/><br/><span>えっ<br/><br/>調べても出ないので、githubに何か書いてないだろうかとREADMEを読んでもない・・・<br/>ていうか"</span><em><span>compiles successful on OS X 10.8</span></em><span>"って書いてあるじゃんウソかよ<br/>という文句が出てきた辺りで、見つけた<br/><br/></span>
+</p>
+<pre>
+	<em><a href="https://github.com/hans">hans</a><span>&nbsp;opened this pull request&nbsp;</span></em>2 months ago<em><span><br/></span></em>
+</pre>
+<p>
+	<em><span>Add dummy implementations to satisfy new IOBluetoothDeviceInquiryDelegate protocol in 10.8</span></em><em>&nbsp;</em>
+</p>
+<p>
+	<span>https://github.com/postskolkovo/lightblue-0.4/pull/3</span>
+</p>
+<p>
+	<span>&nbsp;</span>
+</p>
+<p>
+	<span>pull Requestで指摘されてた。</span>
+</p>
+<p>
+	<span>内容の通りに変更してみる。</span>
+</p>
+<p>
+</p>
+<p>
+	python &gt;&gt;&gt; import lightblue
+</p>
+<p>
+</p>
+<p>
+	遠った！
+</p>
+<p>
+</p>
+<p>
+	関数も正常に動作してるので、これでいいっぽい。
+</p>
+<p>
+	作者が動いてなくても、Pull Requestの文化があれば大丈夫のようだ。
+</p>
+<p>
+	良い世の中になったなあ。
+</p>
+<p>
+</p>

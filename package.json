@@ -1,19 +1,14 @@
 {
-  "name": "lib",
+  "name": "application-name",
   "version": "0.0.1",
-  "description": "nekobato blog",
-  "main": "index.coffee",
+  "private": true,
   "scripts": {
-    "test": "lib"
+    "start": "node app.js"
   },
-  "keywords": [
-    "blog",
-    "node"
-  ],
-  "author": "nekobato",
-  "license": "MIT",
   "dependencies": {
-    "underscore": "~1.5.2",
-    "socket.io": "~0.9.16"
+    "express": "3.4.0",
+    "jade": "*",
+    "stylus": "*",
+    "moment": "~2.4.0"
   }
 }

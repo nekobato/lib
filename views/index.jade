@@ -1,0 +1,13 @@
+extends layout
+
+block content
+	h1 lib.nekobato.net
+	ul.log
+		for v, k in data
+			li
+				a(href=site + "article/" + v.id) #{v.title}
+	article.article(data-id= article.id)
+		h2
+			a(href=site + "article/" + article.id) #{article.title}
+	footer
+		p lib.nekobato.net
