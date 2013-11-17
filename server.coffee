@@ -21,6 +21,7 @@ app.disable 'x-powered-by'
 app.use express.errorHandler()  if "development" is app.get("env")
 
 data = require "./data.json"
+reload = moment().format('ddd, DD MMM YYYY HH:mm:ss ZZ')
 
 #routes
 app.get "/", (req, res) ->
@@ -37,7 +38,7 @@ app.get "/api/:id", (req, res) ->
 	res.send fs.readFileSync(logfile, 'utf-8') if path.existsSync logfile
 	@
 app.get "/rss", (req, res) ->
-	res.render 'rss', {data:data}
+	res.render 'rss', {pubDate: reload, data:data}
 	@
 
 http.createServer(app).listen app.get("port"), ->
