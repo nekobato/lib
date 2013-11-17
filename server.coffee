@@ -1,4 +1,3 @@
-
 express = require "express"
 http = require "http"
 path = require "path"
@@ -7,7 +6,7 @@ fs = require "fs"
 _ = require "underscore"
 moment = require "moment"
 
-app.set "port", process.env.PORT or 3000
+app.set "port", process.env.PORT or 3005
 app.set "views", __dirname + "/views"
 app.set "view engine", "jade"
 app.use express.favicon(__dirname + '/public/favicon.ico', {maxAge: 2592000000})
@@ -17,6 +16,7 @@ app.use express.methodOverride()
 app.use app.router
 app.use require("stylus").middleware(__dirname + "/public")
 app.use express.static(path.join(__dirname, "public"))
+app.disable 'x-powered-by'
 
 app.use express.errorHandler()  if "development" is app.get("env")
 
