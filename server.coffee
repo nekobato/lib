@@ -27,7 +27,7 @@ app.get "/", (req, res) ->
 	res.render 'index', {article: data[0], data: data}
 	@
 app.get "/article/:id", (req, res) ->
-	article = _.where(data, {id: req.params.id})
+	article = _.where data, {id: req.params.id}
 	res.render 'index', {article: article[0], data: data}
 	@
 app.get "/api/:id", (req, res) ->
@@ -37,7 +37,6 @@ app.get "/api/:id", (req, res) ->
 	res.send fs.readFileSync(logfile, 'utf-8') if path.existsSync logfile
 	@
 app.get "/rss", (req, res) ->
-
 	res.render 'rss', {data:data}
 	@
 

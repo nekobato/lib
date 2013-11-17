@@ -18,7 +18,13 @@ h1 {
   color: #333;
 }
 h2 {
-  margin: 40px 0 20px 0;
+  margin: 40px 0 2px 0;
+}
+p.time {
+  margin: 0 0 20px 0;
+  padding: 2px 4px;
+  color: #666;
+  background: #ddd;
 }
 ul {
   padding: 0 0 0 20px;
