@@ -20,8 +20,13 @@ app.disable 'x-powered-by'
 
 app.use express.errorHandler()  if "development" is app.get("env")
 
-data = require "./data.json"
-reload = moment().format('ddd, DD MMM YYYY HH:mm:ss ZZ')
+datafile = "./data.json"
+data = require datafile
+
+# time reload
+reloadTime = () ->
+	moment().format 'ddd, DD MMM YYYY HH:mm:ss ZZ'
+reload = reloadTime()
 
 #routes
 app.get "/", (req, res) ->
@@ -41,6 +46,12 @@ app.get "/rss", (req, res) ->
 	res.render 'rss', {pubDate: reload, data:data}
 	@
 
+# watch file start
+fs.watch datafile, (e, file) ->
+	console.log 'datafile changed.'
+	data = require datafile
+	reload = reloadTime()
+
+# http server start
 http.createServer(app).listen app.get("port"), ->
   console.log "Express server listening on port " + app.get("port")
-
