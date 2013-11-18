@@ -30,7 +30,7 @@ reload = reloadTime()
 
 #routes
 app.get "/", (req, res) ->
-	res.render 'index', {article: data[0], data: data}
+	res.render 'index', {article: data[0], data: data, index: true}
 	@
 app.get "/article/:id", (req, res) ->
 	article = _.where data, {id: req.params.id}
