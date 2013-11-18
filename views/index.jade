@@ -5,11 +5,11 @@ block content
 	ul.log
 		for v, k in data
 			li
-				span #{v.time} 
+				span.time #{v.time} 
 				a(href="#{site}article/#{v.id}") #{v.title}
 	article.article(data-id= article.id)
 		h2
 			a(href=site + "article/" + article.id) #{article.title}
 		p.time #{article.time}
 	footer
-		p lib.nekobato.net
+		a(href="//nekobato.net") © 2013 nekobato.net

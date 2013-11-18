@@ -8,7 +8,7 @@ html {
 body {
   width: 900px;
   margin: 0 auto;
-  padding: 60px;
+  padding: 60px 60px 20px;
 }
 h1 {
   font-size: 72px;
@@ -20,14 +20,22 @@ h1 {
 h2 {
   margin: 40px 0 2px 0;
 }
-p.time {
+article p.time {
   margin: 0 0 20px 0;
-  padding: 2px 4px;
+  padding: 2px 6px;
   color: #666;
-  background: #ddd;
+  background: #e6e6e6;
 }
-ul {
+ul.log {
   padding: 0 0 0 20px;
   list-style: none;
   line-height: 1.8em;
+}
+ul.log .time {
+  margin: 0 0 20px 0;
+  padding: 2px 4px;
+  color: #888;
+}
+footer {
+  margin: 30px 0 0 0;
 }
