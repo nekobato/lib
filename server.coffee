@@ -43,7 +43,11 @@ app.get "/api/:id", (req, res) ->
 	res.send fs.readFileSync(logfile, 'utf-8') if path.existsSync logfile
 	@
 app.get "/rss", (req, res) ->
-	res.render 'rss', {pubDate: reload, data:data}
+	@rssdata = []
+	for d in data[0...9]
+		d.article = fs.readFileSync("./data/log_#{d.id}", 'utf-8')
+		@rssdata.push d
+	res.render 'rss', {pubDate: reload, data: @rssdata}
 	@
 
 # watch file start
