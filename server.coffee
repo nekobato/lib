@@ -42,8 +42,19 @@ app.get "/api/:id", (req, res) ->
 	logfile = './data/log_' + req.params.id
 	res.send fs.readFileSync(logfile, 'utf-8') if path.existsSync logfile
 	@
-app.get "/comment/:id", (req, res) ->
-	return id typeof(req.params.id) is not 'number' and typeof(req.params.id)
+app.post "/comment/", (req, res) ->
+	console.log req.body.id
+	return req.body.id if typeof(req.body.id) is not 'number' and typeof(req.body.id)
+	target = _.where data, {id: req.body.id}
+	comment = {body: req.body.body, time: moment().format()}
+	target[0].comments.push comment if target
+	fs.writeFile datafile, JSON.stringify(data, null, 2), (err) ->
+		if ! err
+			res.send JSON.stringify {result: true, comment: comment }
+		else 
+			res.send JSON.stringify {result: false, error: "data update error"}
+
+	@
 app.get "/rss", (req, res) ->
 	@rssdata = []
 	for d in data[0...9]

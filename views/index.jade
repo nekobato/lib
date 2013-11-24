@@ -11,7 +11,12 @@ block content
 		h2
 			a(href=site + "article/" + article.id) #{article.title}
 		p.time #{article.time}
+	div.comment
+		span.comment-opener comment
+		form.comment-sender(style="display:none")
+			input(type="hidden" name="id" value= article.id)
+			textarea(name="body").comment-body
+			input(type="submit") send
 	footer
 		a(href="//nekobato.net") © 2013 nekobato.net
-	script(type="tet/javascript").
-		$(function(){prettyPrint()});
+	script(type='text/javascript', src='/javascripts/script.js')
