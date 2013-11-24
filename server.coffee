@@ -37,11 +37,13 @@ app.get "/article/:id", (req, res) ->
 	res.render 'index', {article: article[0], data: data}
 	@
 app.get "/api/:id", (req, res) ->
-	return if typeof(x) is not 'number' and typeof(x) is not 'string'
+	return if typeof(req.params.id) is not 'number' and typeof(req.params.id) is not 'string'
 	console.log req.params.id
 	logfile = './data/log_' + req.params.id
 	res.send fs.readFileSync(logfile, 'utf-8') if path.existsSync logfile
 	@
+app.get "/comment/:id", (req, res) ->
+	return id typeof(req.params.id) is not 'number' and typeof(req.params.id)
 app.get "/rss", (req, res) ->
 	@rssdata = []
 	for d in data[0...9]
