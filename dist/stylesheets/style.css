@@ -1,1 +1,74 @@
-@font-face{font-family:"penna";font-style:normal;font-weight:normal;src:url("/font/penna-webfont.eot");src:url("/font/penna-webfont.eot?") format("eot");src:url("/font/penna-webfont.woff") format("woff");src:url("/font/penna-webfont.ttf") format("truetype")}html{padding:0}body{width:900px;margin:0 auto;padding:60px 60px 20px}h1{font-size:72px;font-family:penna;margin:0;color:#333}ul .log{padding:0 0 0 20px;list-style:none;line-height:1.8em}ul .log .time{margin:0 0 20px 0;padding:2px 4px;color:#888}article p.time{margin:0 0 20px 0;padding:2px 6px;color:#666;background:#e6e6e6}article h2{margin:40px 0 2px 0}article pre.prettyprint{padding:20px}article img.ref{max-width:500px;max-height:500px;margin:10px}.comment-opener{float:right;cursor:pointer;color:#e63728}.comment-opener:hover{color:#892418}.comment{padding:10px}.comment ul{list-style:none;padding:0 20px;color:#464646}.comment-sender textarea{margin:10px;width:640px;resize:none}footer{margin:30px 0 0 0}
+@font-face {
+  font-family: "penna";
+  src: url("../fonts/penna-webfont.eot");
+  src: url("../fonts/penna-webfont.eot?") format("eot");
+  src: url("../fonts/penna-webfont.woff") format("woff");
+  src: url("../fonts/penna-webfont.ttf") format("truetype"); }
+
+/* Page Section */
+html {
+  margin: 0;
+  padding: 0; }
+
+body {
+  width: 900px;
+  margin: 0 auto;
+  padding: 60px 60px 20px; }
+
+h1 {
+  font-size: 72px;
+  font-style: normal;
+  font-weight: normal;
+  font-family: penna;
+  margin: 0;
+  color: #333333; }
+
+/* list navigation */
+ul .log {
+  padding: 0 0 0 20px;
+  list-style: none;
+  line-height: 1.8em; }
+ul .log .time {
+  margin: 0 0 20px 0;
+  padding: 2px 4px;
+  color: #888888; }
+
+/* Article Section */
+article p.time {
+  margin: 0 0 20px 0;
+  padding: 2px 6px;
+  color: #666666;
+  background: #e6e6e6; }
+article h2 {
+  margin: 40px 0 2px 0; }
+article pre.prettyprint {
+  padding: 20px; }
+article img.ref {
+  max-width: 500px;
+  max-height: 500px;
+  margin: 10px; }
+
+/* Comment Tool */
+.comment-opener {
+  float: right;
+  cursor: pointer;
+  color: #e63728; }
+
+.comment-opener:hover {
+  color: #892418; }
+
+.comment {
+  padding: 10px; }
+  .comment ul {
+    list-style: none;
+    padding: 0 20px;
+    color: #464646; }
+
+.comment-sender textarea {
+  margin: 10px;
+  width: 640px;
+  resize: none; }
+
+/* footer */
+footer {
+  margin: 30px 0 0 0; }

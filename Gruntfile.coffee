@@ -9,27 +9,27 @@ module.exports = (grunt) ->
       compile:
         files: [{
           expand: yes
-          cwd: 'assets/'
+          cwd: 'assets'
           src: [ '*.coffee' ]
-          dest: 'dist/'
+          dest: 'dist'
           ext: '.js'
         }]
 
     sass:
       options:
         style: 'compressed'
+        check: true
       dist:
         files: [{
           expand: true
           cwd: 'assets'
           src: [ '*.sass' ]
-          dest: 'dist/'
+          dest: 'dist'
           ext: '.css'
         }]
 
     watch:
       options:
-        livereload: yes
         dateFormat: (time) ->
           grunt.log.writeln "The watch finished in #{time}ms at #{new Date().toLocaleTimeString()}"
       coffee:
