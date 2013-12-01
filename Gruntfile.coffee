@@ -18,13 +18,14 @@ module.exports = (grunt) ->
     sass:
       options:
         style: 'compressed'
-        check: true
+        noCache: true
+        trace: true
       dist:
         files: [{
           expand: true
-          cwd: 'assets'
+          cwd: 'assets/sass'
           src: [ '*.sass' ]
-          dest: 'dist'
+          dest: 'dist/stylesheets'
           ext: '.css'
         }]
 
