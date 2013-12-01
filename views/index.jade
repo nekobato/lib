@@ -1,22 +1,41 @@
-extends layout
+site = '/'
 
-block content
-	h1 lib.nekobato.net
-	ul.log
-		for v, k in data
-			li
-				span.time #{v.time} 
-				a(href="#{site}article/#{v.id}") #{v.title}
-	article.article(data-id= article.id)
-		h2
-			a(href=site + "article/" + article.id) #{article.title}
-		p.time #{article.time}
-	div.comment
-		span.comment-opener comment
-		form.comment-sender(style="display:none")
-			input(type="hidden" name="id" value= article.id)
-			textarea(name="body").comment-body
-			input(type="submit") send
-	footer
-		a(href="//nekobato.net") © 2013 nekobato.net
+doctype 5
+html
+	head
+		meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+		if (index)
+			title lib.nekobato.net
+		else
+			title lib.nekobato.net - #{article.title}
+		meta(name="description" content="nekobato blog")
+		meta(charset="utf-8")
+		script(type='text/javascript', src='/libraries/jquery-2.0.3.min.js')
+		script(type='text/javascript', src='/libraries/prettify.js')
+		link(rel='stylesheet', href='/libraries/bootstrap.min.css')
+		link(rel='stylesheet', href='/libraries/prettify.css')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel="alternate" type="application/rss+xml" href="/rss")
+	body
+		h1 lib.nekobato.net
+		ul.log
+			for v, k in data
+				li
+					span.time #{v.time} 
+					a(href="#{site}article/#{v.id}") #{v.title}
+		article.article(data-id= article.id)
+			h2
+				a(href=site + "article/" + article.id) #{article.title}
+			p.time #{article.time}
+		p.comment-opener comment
+		div.comment(style="display:none")
+			ul
+				for v, k in article.comments
+					li #{v.body}
+			form.comment-sender(class="form-inline" role="form")
+				input(type="hidden" name="id" value= article.id)
+				textarea(name="body" class="form-control" rows="1")
+				input(type="submit" class="btn btn-primary" value="Comment")
+		footer
+			a(href="//nekobato.net") © 2013 nekobato.net
 	script(type='text/javascript', src='/javascripts/script.js')

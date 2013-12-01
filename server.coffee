@@ -1,27 +1,25 @@
 express = require "express"
+moment = require "moment"
 http = require "http"
 path = require "path"
-app = express()
 fs = require "fs"
 _ = require "underscore"
-moment = require "moment"
+
+app = express()
 
 app.set "port", process.env.PORT or 3005
-app.set "views", __dirname + "/views"
 app.set "view engine", "jade"
-app.use express.favicon(__dirname + '/public/favicon.ico', {maxAge: 2592000000})
+app.use express.favicon(__dirname + '/dist/favicon.ico', {maxAge: 2592000000})
 app.use express.logger("dev")
 app.use express.bodyParser()
 app.use express.methodOverride()
+app.use express.static(path.join(__dirname, "dist"))
 app.use app.router
-app.use require("stylus").middleware(__dirname + "/public")
-app.use express.static(path.join(__dirname, "public"))
 app.disable 'x-powered-by'
 
-app.use express.errorHandler()  if "development" is app.get("env")
+app.use express.errorHandler() if "development" is app.get("env")
 
-datafile = "./data.json"
-data = require datafile
+data = require datafile = "./data.json"
 
 # time reload
 reloadTime = () ->
@@ -53,7 +51,6 @@ app.post "/comment/", (req, res) ->
 			res.send JSON.stringify {result: true, comment: comment }
 		else 
 			res.send JSON.stringify {result: false, error: "data update error"}
-
 	@
 app.get "/rss", (req, res) ->
 	@rssdata = []
