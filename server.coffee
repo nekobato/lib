@@ -7,7 +7,7 @@ _ = require "underscore"
 
 app = express()
 
-app.set "port", process.env.PORT or 3005
+app.set "port", process.env.PORT or 3010
 app.set "view engine", "jade"
 app.use express.favicon(__dirname + '/dist/favicon.ico', {maxAge: 2592000000})
 app.use express.logger("dev")
@@ -38,7 +38,7 @@ app.get "/api/:id", (req, res) ->
 	return if typeof(req.params.id) is not 'number' and typeof(req.params.id) is not 'string'
 	console.log req.params.id
 	logfile = './data/log_' + req.params.id
-	res.send fs.readFileSync(logfile, 'utf-8') if path.existsSync logfile
+	res.send fs.readFileSync(logfile, 'utf-8') if fs.existsSync logfile
 	@
 app.post "/comment/", (req, res) ->
 	console.log req.body.id
