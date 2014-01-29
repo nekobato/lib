@@ -18,11 +18,7 @@ html
     link(rel="alternate" type="application/rss+xml" href="/rss")
   body
     h1 lib.nekobato.net
-    ul.log
-      for v, k in data
-        li
-          span.time #{v.time} 
-          a(href="#{site}article/#{v.id}") #{v.title}
+
     article.article(data-id= article.id)
       h2
         a(href=site + "article/" + article.id) #{article.title}
@@ -36,6 +32,13 @@ html
         input(type="hidden" name="id" value= article.id)
         textarea(name="body" class="form-control" rows="1")
         input(type="submit" class="btn btn-primary" value="Comment")
+
+    ul.log
+      for v, k in data
+        li
+          span.time #{v.time} 
+          a(href="#{site}article/#{v.id}") #{v.title}
+
     footer
       a(href="//nekobato.net") © 2013 nekobato.net
   script(type='text/javascript', src='/javascripts/script.js')
