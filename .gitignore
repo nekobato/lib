@@ -1,21 +1,9 @@
-lib-cov
-*.seed
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
-
-.sass-cache
-
-pids
-logs
-results
+.Apple*
+.DS*
 
 npm-debug.log
 node_modules
-data
-data.json
 
-.DS_*
+*.map
+public
+pages

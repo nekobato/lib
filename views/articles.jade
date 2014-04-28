@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  header
+    nav
+      ul
+        li
+          a(href="/articles") articles
+        li
+          a(href="/rss") RSS
+        li
+          a(href="//nekobato.net/") nekobato.net
+  section.articles
+    ul
+      for v, k in articles
+        li
+          a(href="article/#{v.id}") #{v.title}
+  extends footer
