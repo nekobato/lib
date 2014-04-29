@@ -16,3 +16,7 @@ nekobato blog
 * /admin/write
 * /admin/delete
 * /admin/edit
+
+## pages
+
+以前のarticles紛失／(^o^)＼
