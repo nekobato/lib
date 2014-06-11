@@ -1,0 +1,7 @@
+{
+  "name": "nekobato-lib",
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "dropzone": "~3.10.2"
+  }
+}

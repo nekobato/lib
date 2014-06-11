@@ -1,65 +1,37 @@
-express = require "express"
-router = express.Router()
+#!/usr/bin/env coffee
 
-# index 
+express = require("express")
+router = express.Router()
+fs = require("fs")
+path = require("path")
+
+
+# GET home page.
 router.get "/", (req, res) ->
   res.render "index",
-    title: "Otabooken"
-    article:
-      id: "article-id"
-      title: "article title"
-      time: "now"
-      body: "article body"
-    articles: [
-      { id: "id1", title: "article1 title" }
-      { id: "id2", title: "article2 title" }
-      { id: "id3", title: "article3 title" }
-      { id: "id4", title: "article4 title" }
-    ]
-
+    title: "Express"
   return
 
-# article
-router.get "/article/(:id)", (req, res) ->
-  res.render "index",
-    title: "Otabooken"
-    article:
-      id: "article-id"
-      title: "article title"
-      time: "now"
-      body: "article body"
-    articles: [
-      { id: "id1", title: "article1 title" }
-      { id: "id2", title: "article2 title" }
-      { id: "id3", title: "article3 title" }
-      { id: "id4", title: "article4 title" }
-    ]
-
+router.get "/archive/:id", (req, res) ->
+  fs.readFile path.resolve("./archive/", req.params.id)
+  , (err, data) ->
+    console.log err if err
+    res.render "index",
+      title: "nekobato.lib"
+      article: data
   return
 
-# articles
-router.get "/articles", (req, res) ->
-  res.render "articles",
-    articles: [
-      { id: "id1", title: "article1 title" }
-      { id: "id2", title: "article2 title" }
-      { id: "id3", title: "article3 title" }
-      { id: "id4", title: "article4 title" }
-    ]
-
+router.get "/admin", (req, res) ->
+  res.render "admin"
   return
 
-# RSS
-router.get "/rss", (req, res) ->
-  res.render "rss",
-    pubDate: "now"
-    articles: [
-      { id: "id1", title: "article1 title", body: "article body" }
-      { id: "id2", title: "article2 title", body: "article body" }
-      { id: "id3", title: "article3 title", body: "article body" }
-      { id: "id4", title: "article4 title", body: "article body" }
-    ]
-
-  return
+router.post "/admin/post", (req, res) ->
+  model = req.app.get("models")
+  data =
+    title: req.query.title
+    article: req.query.article
+  model.post data, (err, id) ->
+    res.send err if err
+    res.send id
 
 module.exports = router

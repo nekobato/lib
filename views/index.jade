@@ -2,29 +2,5 @@ extends layout
 
 block content
   h1= title
-  header
-    nav
-      ul
-        li
-          a(href="/articles") articles
-        li
-          a(href="/rss") RSS
-        li
-          a(href="//nekobato.net/") nekobato.net
-  section.article
-    nav.pager
-      if article.prev
-        span.prev.article Prev
-      if article.next
-        span.next-article Next
-    article
-      h2
-        a(href="#{baseUri}article/#{article.id}") #{article.title}
-      p.time #{article.time}
-      div.body #{article.body}
-  section.articles
-    ul
-      for v, k in articles
-        li
-          a(href="article/#{v.id}") #{v.title}
-  extends footer
+  if article
+    div!= article

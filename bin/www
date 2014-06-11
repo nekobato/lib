@@ -1,7 +1,9 @@
-debug = require('debug')('my-application')
-app = require '../app'
+#!/usr/bin/env coffee
+
+debug = require('debug')('lib');
+app = require '../config/app'
 
 app.set 'port', process.env.PORT || 3000
 
-server = app.listen app.get('port'), () ->
+server = app.listen app.get('port'), ->
   debug 'Express server listening on port ' + server.address().port

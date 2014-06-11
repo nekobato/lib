@@ -6,7 +6,7 @@ nekobato blog
 ## Client Route
 
 * /
-* /article/***
+* /article/**
   /articles
 * /rss
 

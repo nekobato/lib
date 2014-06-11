@@ -3,7 +3,10 @@
 
 npm-debug.log
 node_modules
+.sass-cache
 
 *.map
 public
 pages
+
+leveldb

@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1 Admin
+  script(type='text/javascript' src='/vendor/bower/dropzone/downloads/dropzone.min.js')
+  div#dropzone-wrapper
+    h2 Post article
+    form#dropzone-dropzone.dropzone(action='/admin/post')
+      input(name='title', type='text')
+      input(name='file', type='file' multiple)
+  script(type='text/javascript', src='/javascripts/main.js')
