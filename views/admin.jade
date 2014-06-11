@@ -3,9 +3,10 @@ extends layout
 block content
   h1 Admin
   script(type='text/javascript' src='/vendor/bower/dropzone/downloads/dropzone.min.js')
-  div#dropzone-wrapper
+  div#form-wrapper
     h2 Post article
-    form#dropzone-dropzone.dropzone(action='/admin/post')
+    form#formzone(action='/admin/post', method="post", enctype="multipart/form-data")
       input(name='title', type='text')
-      input(name='file', type='file' multiple)
+      textarea(name='article')
+      input(type='submit', value='Send')
   script(type='text/javascript', src='/javascripts/main.js')
