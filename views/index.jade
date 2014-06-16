@@ -1,6 +1,10 @@
-extends layout
-
-block content
-  h1= title
-  if article
-    div!= article
+doctype html
+html
+  include includes/head
+  body
+    div.page-wrapper
+      include includes/header
+      section#index
+        include includes/archive
+        include includes/article
+      include includes/footer

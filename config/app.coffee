@@ -6,6 +6,7 @@ cookieParser = require("cookie-parser")
 bodyParser = require("body-parser")
 routes = require("../routes")
 models = require("../models")
+_ = require("lodash")
 app = express()
 
 # view engine setup

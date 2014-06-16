@@ -1,9 +1,11 @@
-#!/usr/bin/env coffee
+#!/usr/bin/env node
 
-debug = require('debug')('lib');
-app = require '../config/app'
+require('coffee-script/register');
+var debug = require('debug')('lib');
+var app = require('../config/app');
 
-app.set 'port', process.env.PORT || 3000
+app.set('port', process.env.PORT || 3000);
 
-server = app.listen app.get('port'), ->
-  debug 'Express server listening on port ' + server.address().port
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});

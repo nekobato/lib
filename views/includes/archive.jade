@@ -1,0 +1,5 @@
+nav.archive
+  ul
+    for a in archive
+      li
+        a(href='/archive/#{a.id}')= a.title

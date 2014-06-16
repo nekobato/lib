@@ -1,6 +1,9 @@
 {
   "name": "nekobato-lib",
   "dependencies": {
-    "jquery": "~2.1.1"
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.1.1",
+    "prettyprint": "*",
+    "google-code-prettify": "~1.0.1"
   }
 }

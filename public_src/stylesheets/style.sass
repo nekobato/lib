@@ -1,22 +1,74 @@
 @import compass/css3
 
 // Commons
-
-// Home
-
-// Admin
-#dropzone-wrapper
+.page-wrapper
+  margin: 0 auto
   width: 900px
-  margin: 0 auto
-#dropzone-dropzone
+
+nav.links
+  ul
+    padding: 0
+    list-style: none
+    font-size: 1.5em
+    li
+      display: inline
+      margin: 0 10px 0 0
+
+nav.archive
+  ul
+    padding: 0
+    list-style: none
+
+article
+  width: 640px
+  font-size: 1.2em
+  line-height: 2em
+  p, pre
+    margin: 10px 0
+
+footer
+  margin: 40px 0 0 0
+
+.admin-post
   width: 400px
-  height: 300px
-  margin: 0 auto
+  margin: 0 auto 40px
+  padding: 10px
   background: #F5F5F5
   box-shadow: 0 0 0 4px #FFFFFF, 0 0 0 5px #DDDDDD
   border-radius: 5px
-  p
-    margin: 0 auto
+  h2
+    margin: 0
+    padding: 20px 0
     text-align: center
-    line-height: 300px
-    color: #AAAAAA
+  #post-body
+    height: 200px
+
+.admin-edit
+  width: 700px
+  margin: 0 auto 40px
+  padding: 10px
+  background: #F5F5F5
+  box-shadow: 0 0 0 4px #FFFFFF, 0 0 0 5px #DDDDDD
+  border-radius: 5px
+  h2
+    margin: 0
+    padding: 20px 0
+    text-align: center
+  form
+    margin: 0 0 0 280px
+  ul
+    float: left
+    width: 280px
+    height: 500px
+    list-style: none
+    padding: 0
+    li
+      margin: 0 10px 5px 0
+      padding: 4px
+      color: #333333
+      background: #CCDDFF
+      border-radius: 4px
+      cursor: pointer
+      
+  #post-body
+    height: 200px

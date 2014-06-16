@@ -1,0 +1,9 @@
+if article
+  link(rel="stylesheet", href="/vendor/bower/google-code-prettify/src/prettify.css", type="text/css")
+  article.article
+    p.date= article.date
+    h2.title
+      a(href='/archive/#{article.id}') #{article.title}
+    div.body!= article.body
+  script(type='text/javascript', src='/vendor/bower/google-code-prettify/src/prettify.js')
+  script(type='text/javascript', src='/javascripts/do-prettify.js')

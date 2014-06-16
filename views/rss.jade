@@ -1,0 +1,15 @@
+doctype xml
+rss(version="2.0")
+  channel
+    description nekobato memo library
+    title nekobato.lib
+    generator nekobato.net
+    link lib.nekobato.net
+    for article in archive
+      item
+        title= article.title
+        description= article.body
+        link http://lib.nekobato.net/archive/#{article.id}
+        guid http://lib.nekobato.net/archive/#{article.id}
+        pubDate= article.date
+
